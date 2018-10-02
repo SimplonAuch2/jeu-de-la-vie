@@ -37,5 +37,10 @@ Trouvez l'équilibre de manière à ce que tout ce petit monde puisse à la fois
 - Présentation du programme fonctionnel sur ghpage si possible (bonus)
 
 
+### Sprint 2
+
+- un animal qui ne mange pas finit par mourrir
+- des bactéries pullulent, et de temps-en-temps, certaines sont toxiques
+- intégrez phaser.io ou pixijs.io au programme
 
 
