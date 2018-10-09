@@ -1,0 +1,58 @@
+
+* {
+	margin: 0;
+	padding: 0;
+	font-family: arial;
+}
+
+table {
+	float: left;
+	display: inline-block;
+	border-collapse: collapse;
+	margin: 5px 10px;
+}
+
+td {
+	border: 1px lightGrey solid;
+	width: 40px;
+	height: 40px;
+	position: relative;
+}
+
+img {
+	max-width: 40px;
+	max-height: 40px;
+	position: absolute;
+	top: 0;
+	left: 0;
+}
+
+#list {
+	display: inline;
+}
+
+#list>div {
+	display: inline-block;
+	display: none;
+	list-style-type: none;
+	margin: 0 5px 5px 0;
+}
+
+h1 {
+	color: white;
+	text-align: center;
+	font-size: 18px;
+}
+
+.alive h1 {
+	background-color: lightGrey;
+}
+
+.dead h1 {
+	background-color: red;
+}
+
+b {
+	display: inline-block;
+	min-width: 70px;
+}
