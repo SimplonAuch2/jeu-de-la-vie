@@ -15,8 +15,10 @@ var Vegetal = function(x, y)
 		// moving, getting older, digesting
 		this.parent_update.call(this);
 
+		if( ! this.alive) return;
+
 		// reproducing
-		if( Math.random()>.995 )
+		if( Math.random()>.99 )
 		{
 			this.reproduce(1);
 		}
@@ -25,7 +27,7 @@ var Vegetal = function(x, y)
 
 	this.toHtml = function()
 	{
-		return this.isAlive()
+		return this.alive
 			? '<img src="img/grass.svg" alt="A vegetal" class="'+this.uuid+'"/>'
 			: '<img src="img/grass-dead.svg" alt="A vegetal" class="'+this.uuid+'"/>';
 	}

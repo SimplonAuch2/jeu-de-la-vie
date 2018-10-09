@@ -9,8 +9,9 @@ function Living(x,y)
 
 	this.age = 0;
 	this.maxAge = Math.round(Math.random()*100) + 100;
-	this.stomach = Math.round(Math.random()*100) + 100;
+	this.stomach = Math.round(Math.random()*50) + 50;
 	this.movable = true;
+	this.alive = true;
 	this.x = x;
 	this.y = y;
 	this.uuid = UID();
@@ -19,22 +20,28 @@ function Living(x,y)
 
 	this.update = function()
 	{
+		// betting older
+
+		this.age++; // always increments, as it allow us to let a dead body lie before removing it...
+
+		if( this.alive )
+		{
+			if( this.age >= this.maxAge )
+			{
+				this.die(this.constructor.name + ' ('+this.uuid+') is dead from his old age !');
+			}
+		}
+		else
+		{
+			return;
+		}
+
 		// moving
 
 		if( this.movable )
 		{
 			this.move();
 		}
-
-		// betting older
-
-		this.age++; // always increments, as it allow us to let a dead body lie before removing it...
-
-		if( this.age >= this.maxAge )
-		{
-			this.die(this.constructor.name + ' is dead from his old age !');
-		}
-
 		// digesting
 
 		if( this.stomach>0 )
@@ -43,7 +50,11 @@ function Living(x,y)
 
 			if( this.stomach <= 0 )
 			{
-				this.die(this.constructor.name + ' is dead of hunger !');
+				this.die(this.constructor.name + ' ('+this.uuid+') is dead of hunger !');
+			}
+			if( this.stomach > 2000 )
+			{
+				this.die(this.constructor.name + ' ('+this.uuid+') is dead of indigestion !');
 			}
 		}
 	}
@@ -66,6 +77,7 @@ function Living(x,y)
 
 	this.die = function( msg )
 	{
+		this.alive = false;
 		this.movable = false;
 		console.log(msg);
 	}
@@ -113,7 +125,7 @@ function Living(x,y)
 
 	this.isAlive = function()
 	{
-		return this.age<this.maxAge;
+		return this.alive;
 	}
 
 	this.toHtml = function()

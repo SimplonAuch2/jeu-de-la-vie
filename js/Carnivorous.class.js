@@ -14,6 +14,8 @@ var Carnivorous = function(x, y)
 		// moving, getting older, digesting
 		this.parent_update.call(this);
 
+		if( ! this.alive) return;
+
 		// reproducing
 		var neighborhood = w.getObjectsAt(this.x, this.y, 'Vegetarian', this.uuid);
 
@@ -31,14 +33,14 @@ var Carnivorous = function(x, y)
 		for( var i=0 ; i<neighborhood.length ; i++ )
 		{
 			this.stomach += neighborhood[i].stomach / 2;
-			neighborhood[i].die('Heaten y a dino !');
+			neighborhood[i].die('Heaten by a dino !');
 		}
 	}
 
 
 	this.toHtml = function()
 	{
-		if( ! this.isAlive() )
+		if( ! this.alive )
 		{
 			return '<img src="img/dino-dead.svg" alt="A Carnivorous" class="'+this.uuid+'"/>';
 		}
